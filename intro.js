@@ -3,7 +3,7 @@ var fibButton= document.getElementById('fibB');
 var heading = document.getElementById('h');
 var list = document.getElementById('thelist');
 var fibList = document.getElementById('fib');
-var listItem = document.getElementsByTagName('li');
+var listItem = list.getElementsByTagName('li');
 var fibItem = fibList.getElementsByTagName('li');
 
 var addElement = function(e) {
