@@ -1,18 +1,22 @@
+var theButton = document.getElementById('b');
+var heading = document.getElementById('h');
+var list = document.getElementById('thelist');
+var listItem = document.getElementsByTagName('li');
+
 var addElement = function(e) {
-    var c = document.getElementById('thelist');
-    c.appendChild(document.createElement('li'));
+    var newListItem = document.createElement('li');
+    newListItem.innerHTML = 'item ' + listItem.length;
+    newListItem.addEventListener('mouseover', changeHeading);
+    newListItem.addEventListener('mouseout', revertHeading);
+    newListItem.addEventListener('click', rmItem);
+    list.appendChild(newListItem);
 };
 
-var b = document.getElementById('b');
-b.addEventListener('click', addElement);
-
 var changeHeading = function(e) {
-    var heading = document.getElementById('h');
     heading.innerHTML = this.innerHTML;
 };
 
 var revertHeading = function(e) {
-    var heading = document.getElementById('h');
     heading.innerHTML = 'Hello World!';
 };
 
@@ -20,9 +24,10 @@ var rmItem = function(e) {
     this.remove();
 };
 
-var d = document.getElementsByTagName('li');
-for (var i=0;i<d.length;i++){
-    d[i].addEventListener('mouseover', changeHeading);
-    d[i].addEventListener('mouseout', revertHeading);
-    d[i].addEventListener('click', rmItem);
+theButton.addEventListener('click', addElement);
+
+for (var i=0;i<listItem.length;i++){
+    listItem[i].addEventListener('mouseover', changeHeading);
+    listItem[i].addEventListener('mouseout', revertHeading);
+    listItem[i].addEventListener('click', rmItem);
 };
